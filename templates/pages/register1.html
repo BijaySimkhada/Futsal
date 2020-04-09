@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Register | Futsal {% endblock %}
+{% block content %}
+    <div class="container" style="height:67vh; widht:50vw; position:relative; top:11vh;">
+        <div class="row" style="display:flex; flex-direction:column; justify-content:center; align-items:center">
+            <div class="col-lg-6  col-lg-offset-3">
+                <h1 align="center" style="font-family: 'Kaushan Script', cursive; margin-bottom:10px">Register</h1>
+                 <form action="register" method="post" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">{% csrf_token %}
+                    {{ form|crispy }}
+                    {{ info|crispy }}
+                    <button class="btn btn-default" type="submit" style="margin-top: 10px; height: 5vh; width: 10vw"> Register </button>
+                 </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

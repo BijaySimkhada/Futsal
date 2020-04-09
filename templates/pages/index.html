@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="first-section">
+        <i><H1 class="heading" style="font-family: 'Luckiest Guy', cursive;">fUTSAL</H1></i>
+        <div class="search-container">
+            <img src="{% static 'image/fb.png' %}" alt="logo">
+              <form action="">
+                  {% csrf_token %}
+                  <input type="text" placeholder="Search from here">
+                  <i class="fas fa-search" type="submit"></i>
+              </form>
+        </div>
+    </section>
+    <section class="second-section">
+        <h1>Top rated Futsals</h1>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-header">
+                    <h4><i class="far fa-address-card"></i> Futsal</h4>
+                </div>
+                <div class="card-body">
+                    <img src="{% static 'image/Indoor soccer field.jfif' %}" alt="no img">
+                </div>
+                <div class="card-footer">
+                    <h5> <i class="fas fa-location-arrow"></i> Location</h5>
+                    <h5> <i class="far fa-clock"></i> OpenTime</h5>
+                    <Button class="bookbtn">Book Now</Button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="third-section">
+        <h1>Tournaments</h1>
+        <div class="banner-container">
+            <div class="tournament">
+                <div class="card-header">
+                    <h4 style="margin-top: 10px;"> <i class="fas fa-futbol"></i> Name of tournament</h4>
+                </div>
+                <div class="t-body">
+                    <img src="{% static 'image/Indoor soccer field.jfif' %}" alt="no img"/><!-- 146 letters max in description -->
+                    <p class="t-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio dolor delectus et, nulla quidem harum tenetur sunt sed commodi vitae iure quibusdam</p>
+                </div>
+                <div class="t-footer">
+                    <h5> <i class="far fa-calendar-alt"></i> Date</h5>
+                    <h5> <i class="far fa-clock"></i> Time</h5>
+                    <h5> <i class="fas fa-location-arrow"></i> Location</h5>
+                </div>
+            </div>
+            <div class="tournament">
+                <div class="card-header">
+                    <h4 style="margin-top: 10px;"> <i class="fas fa-futbol"></i> Name of tournament</h4>
+                </div>
+                <div class="t-body">
+                    <img src="{% static 'image/Indoor soccer field.jfif' %}" alt="no img"/><!-- 146 letters max in description -->
+                    <p class="t-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio dolor delectus et, nulla quidem harum tenetur sunt sed commodi vitae iure quibusdam</p>
+                </div>
+                <div class="t-footer">
+                    <h5> <i class="far fa-calendar-alt"></i> Date</h5>
+                    <h5> <i class="far fa-clock"></i> Time</h5>
+                    <h5> <i class="fas fa-location-arrow"></i> Location</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

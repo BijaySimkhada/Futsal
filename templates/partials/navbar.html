@@ -1,0 +1,28 @@
+    {% load static %}
+    <header>
+        <ul class="header">
+              {% if messages %}
+            {% for msg in messages %}
+            <li class='header-item' style="color:red; background: black; padding: 0px 10px 0px 10px">{{msg}}</li>
+            {%endfor %}
+            {% endif%}
+            <li class="header-items">FutsalBooker</li>
+            <li class="header-items">+977-9856555564</li>
+            <li class="header-items">futsalBooker@gmail.com</li>
+        </ul>
+    </header>
+    <nav class="nav-bar">
+        <img src="{% static 'image/logo.png' %}" alt="" height="45px" width="auto">
+        <!--<h1 class="nav-items" style="font-size : 2rem; font-family: 'montserrat', sans-serif;">Logo</h1> -->
+        <ul class="nav-items-container">
+            <li class="nav-items"><a href="{% url 'home' %}">Home</a></li>
+            <li class="nav-items">Futsals</li>
+            <li class="nav-items">Contact</li>
+            {% if user.is_authenticated %}
+            <li class="nav-items">Hello, {{ user.username }}</li>
+            <li class="nav-items"><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li class="nav-items"><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
