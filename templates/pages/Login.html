@@ -1,17 +1,28 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block title %} Login | Futsal {% endblock %}
 {% block content %}
-<div class="container" style="height:67vh; widht:50vw; position:relative; top:20vh;">
+<img src="{% static 'image/jiff.png' %}" alt="" class="img-banner">
+<img src="{% static 'image/new.png' %}" alt="" class="img-banner2">
+<div class="container" id="container" style="height:70vh; widht:50vw; position:relative; top:20vh;">
     <div class="row" style="display:flex; flex-direction:column; justify-content:center; align-items:center">
         <div class="col-lg-6  col-lg-offset-3">
             <h1 align="center" style="font-family: 'Kaushan Script', cursive; margin-bottom:10px">Login</h1>
             <form action="login" method="post" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">{% csrf_token %}
                     {{ form|crispy }}
-                <p style="font-family: 'monsterrat', sans-serif; font-size:12px; margin:10px 0px 5px 0px;"> Don't have a account?<a href="{% url 'register' %}">Register here</a></p>
+                <p style="font-family: 'monsterrat', sans-serif; font-size:12px; margin:10px 0px 5px 0px;"> Don't have a account?<a href="#" onclick="expand()">Register here</a></p>
                     <button class="btn btn-default" type="submit" style="margin-top: 10px; height: 5vh; width: 10vw">Login</button>
             </form>
         </div>
     </div>
+</div>
+<div class="login-option" id="login-option">
+    <p onclick="contract()" style="color: white; position: relative; left: 88%; cursor: pointer;"><i class="fas fa-times"></i></p>
+    <ul>
+        <h1 style="font-family: 'Kaushan Script', cursive; margin-bottom:10px; color:white;">Register as</h1>
+        <a href="{% url 'registerFutsal' %}"><li class="options">Futsal</li></a>
+        <a href="{% url 'register' %}"><li class="options">Customer</li></a>
+    </ul>
 </div>
 {% endblock %}

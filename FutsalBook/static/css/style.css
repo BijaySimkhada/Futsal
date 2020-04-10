@@ -299,3 +299,36 @@ footer .footer-items{
     font-size: 0.9rem;
     font-family: 'Montserrat', sans-serif;
 }
+.login-option{
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 38%;
+    height: 28vh;
+    width: 25vw;
+    background-color: white;
+    padding: 20px 0px 60px 0px;
+    box-shadow: 10px 10px 8px 10px #888888;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    background-color: var(--secondary-background);
+}
+.login-option ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-option ul a{
+    text-decoration: none;
+}
+.login-option ul li{
+    margin: 10px 0px 20px 0px;
+    height: 5vh;
+    width: auto;
+    background-color: #41eb7c;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px 0px 10px
+}

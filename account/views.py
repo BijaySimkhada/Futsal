@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import LoginForm, RegisterUser, InfoUser
+from .forms import LoginForm, RegisterUser, InfoUser, FutsalForm
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import Account, UserInfo, FutsalInfo
@@ -69,3 +69,15 @@ def returnLogin(request):
 def logoutUser(request):
     auth.logout(request)
     return redirect("home")
+
+
+def registerFutsal(request):
+    context = {}
+    if request.method == 'POST':
+        return render(request, "pages/register2.html", context)
+    else:
+        userform = RegisterUser(request.POST)
+        infoform = FutsalForm(request.POST)
+        context['form'] = userform
+        context['info'] = infoform
+        return render(request, "pages/register2.html", context)

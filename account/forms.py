@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account, UserInfo
+from .models import Account, UserInfo, FutsalInfo
 from crispy_forms.helper import FormHelper
 
 
@@ -44,3 +44,9 @@ class InfoUser(forms.Form):
 
     fields = ('first_name', 'last_name', 'phone')
 
+class FutsalForm(forms.ModelForm):
+    helper = FormHelper()
+    helper.form_show_errors = True
+    class Meta:
+        model = FutsalInfo
+        fields = ('futsal_name', 'phone', 'location', 'open_at', 'close_at', 'price', 'img1', 'img2', 'img3', 'img4')

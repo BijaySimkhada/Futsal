@@ -75,6 +75,10 @@ class FutsalInfo(models.Model):
     price = models.FloatField(null=False)
     open_at = models.CharField(max_length=40, null=False)
     close_at = models.CharField(max_length=40, null=False)
+    img1 = models.ImageField(upload_to="futsal/gallery", blank=True, null=True)
+    img2 = models.ImageField(upload_to="futsal/gallery", blank=True, null=True)
+    img3 = models.ImageField(upload_to="futsal/gallery", blank=True, null=True)
+    img4 = models.ImageField(upload_to="futsal/gallery", blank=True, null=True)
 
     def __str__(self):
         return self.futsal_name

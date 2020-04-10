@@ -7,3 +7,14 @@ window.addEventListener('scroll', () => {
     }
     console.log(scrolled);
 });
+
+
+function expand(){
+    obj = document.querySelector("#login-option");
+    obj.style.display = "block";
+}
+
+function contract(){
+    obj = document.querySelector("#login-option");
+    obj.style.display = "none";
+}
