@@ -5,7 +5,8 @@ from django.contrib.auth.models import User, auth
 from .models import Account, UserInfo, FutsalInfo
 # Create your views here.
 
-def register(request):                                                                  #registration for Normal User
+
+def register(request):
     context = {}
     if request.method == 'GET':
         userform = RegisterUser()
@@ -63,7 +64,7 @@ def returnLogin(request):
             return redirect("/")
         else:
             messages.warning(request, 'Invalid Credentials')
-            return redirect("login")
+            return redirect("account/login")
 
 
 def logoutUser(request):
@@ -74,10 +75,41 @@ def logoutUser(request):
 def registerFutsal(request):
     context = {}
     if request.method == 'POST':
-        return render(request, "pages/register2.html", context)
+        userform = RegisterUser(request.POST or None)
+        infoform = FutsalForm(request.POST or None, request.FILES or None)
+        if userform.is_valid() and infoform.is_valid():
+            username = userform.cleaned_data.get('username')
+            email = userform.cleaned_data.get('email')
+            password = userform.cleaned_data.get('password')
+            acc_type = 'Futsal'
+            user = Account.objects.create_user(username=username, password=password, email=email, acc_type=acc_type)
+
+            info = FutsalInfo()
+
+            info.futsal_name = infoform.cleaned_data.get('futsal_name')
+            info.phone = infoform.cleaned_data.get('phone')
+            info.location = infoform.cleaned_data.get('location')
+            info.open_at = infoform.cleaned_data.get('open_at')
+            info.close_at = infoform.cleaned_data.get('close_at')
+            info.price = infoform.cleaned_data.get('price')
+            info.account_id = user
+
+            if request.FILES:
+                info.img1 = infoform.cleaned_data['img1']
+                info.img2 = infoform.cleaned_data['img2']
+                info.img3 = infoform.cleaned_data['img3']
+                info.img4 = infoform.cleaned_data['img4']
+
+            user.save()
+            info.save()
+            return redirect('/')
+        else:
+           context['form'] = userform
+           context['info'] = infoform
+           return render(request, "pages/register2.html", context)
     else:
-        userform = RegisterUser(request.POST)
-        infoform = FutsalForm(request.POST)
+        userform = RegisterUser(request.POST or None)
+        infoform = FutsalForm(request.POST or None, request.FILES or None)
         context['form'] = userform
         context['info'] = infoform
         return render(request, "pages/register2.html", context)

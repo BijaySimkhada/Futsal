@@ -7,7 +7,7 @@
     <img src="{% static 'image/new.png' %}" alt="" class="img-banner2">
     <h1 align="center" style="font-family:'Kaushan Script', cursive; margin-bottom:5px; margin-top:15vh">Register Futsal</h1>
     <div class="form-container">
-                <form action="registerFutsal" method="post" class="reg-form">{% csrf_token %}
+                <form action="registerFutsal" method="post" class="reg-form" enctype='multipart/form-data'>{% csrf_token %}
                     <div class="creditentials">
                         <div class="inner-form">
                             <h2>Basic Information</h2>
