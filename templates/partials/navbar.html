@@ -16,10 +16,10 @@
         <!--<h1 class="nav-items" style="font-size : 2rem; font-family: 'montserrat', sans-serif;">Logo</h1> -->
         <ul class="nav-items-container">
             <li class="nav-items"><a href="{% url 'home' %}">Home</a></li>
-            <li class="nav-items">Futsals</li>
-            <li class="nav-items">Contact</li>
+            <li class="nav-items"><a href="#">Futsals</a></li>
+            <li class="nav-items"><a href="#">Contact</a></li>
             {% if user.is_authenticated %}
-            <li class="nav-items">Hello, {{ user.username }}</li>
+            <li class="nav-items"><a href="#">Hello, {{ user.username }}</a></li>
             <li class="nav-items"><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
             <li class="nav-items"><a href="{% url 'login' %}">Login</a></li>

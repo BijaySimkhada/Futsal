@@ -44,9 +44,15 @@ class InfoUser(forms.Form):
 
     fields = ('first_name', 'last_name', 'phone')
 
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
+
 class FutsalForm(forms.ModelForm):
     helper = FormHelper()
     helper.form_show_errors = True
     class Meta:
         model = FutsalInfo
+        widgets = {'open_at': TimeInput(), 'close_at': TimeInput()}
         fields = ('futsal_name', 'phone', 'location', 'open_at', 'close_at', 'price', 'img1', 'img2', 'img3', 'img4')
