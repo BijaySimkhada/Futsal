@@ -11,7 +11,7 @@
             <h1 align="center" style="font-family: 'Kaushan Script', cursive; margin-bottom:10px">Login</h1>
             <form action="login" method="post" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">{% csrf_token %}
                     {{ form|crispy }}
-                <p style="font-family: 'monsterrat', sans-serif; font-size:12px; margin:10px 0px 5px 0px;"> Don't have a account?<a href="#" onclick="expand()">Register here</a></p>
+                <p style="font-family: 'monsterrat', sans-serif; font-size:12px; margin:10px 0px 5px 0px;"> Don't have an account?<a href="#" class="click" onclick="expand()">Register here</a></p>
                     <button class="btn btn-default" type="submit" style="margin-top: 10px; height: 5vh; width: 10vw">Login</button>
             </form>
         </div>
@@ -25,4 +25,5 @@
         <a href="{% url 'register' %}"><li class="options">Customer</li></a>
     </ul>
 </div>
+<div class="screen" id="screen"></div>
 {% endblock %}
