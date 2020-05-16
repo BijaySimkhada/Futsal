@@ -11,11 +11,11 @@
     font-size: 15px;
     --bg-color: #fbffc4;
     --bg-color-s:  #5ec72d;
-    --bg:linear-gradient(to right, #fbffc4, #5ec72d);
+    --bg:linear-gradient(to right, #faffae, #5ec72d);
     --transition-speed: 0.8s;
 }
 body{
-    background-color: #fbffc4;
+    background-color: #faffae;
     width: 100%;
 }
 header{
@@ -107,6 +107,10 @@ header ul li{
     align-items: center;
     justify-content: center;
     background-image: var(--bg);
+    transition: 0.5s;
+    clip-path: polygon(50% 18%, 100% -13%, 89% 65%, 50% 100%, 12% 65%, -2% -14%);
+}
+.first-section:hover{
     clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
 }
 .first-section img{
@@ -173,7 +177,7 @@ header ul li{
     padding: 10px 0px 10px 0px;
     height: auto;
     border-radius: 10px;
-    width: 250px;
+    width: 300px;
     background-color: var(--secondary-background);
     color: var(--primary-textcolor);
     font-family: 'montserrat', sans-serif;
@@ -202,12 +206,16 @@ header ul li{
     margin: 10px 10px 10px 10px;
     padding: 5px 5px 5px 5px;
     border-style: none;
-    height: 30px;
+    height: 20px;
     color: var(--secondary-text-color);
     background-color: #41eb7c;
     border-radius: 5px;
     font-weight: bold;
     transition: 1s;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .bookbtn:hover{
     background-color: #5ec72d;

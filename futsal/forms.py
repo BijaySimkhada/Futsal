@@ -1,5 +1,4 @@
 from django import forms
-from .models import Booking
 from crispy_forms.helper import FormHelper
 
 
@@ -16,8 +15,7 @@ class BookingForm(forms.Form):
     helper.form_show_errors = True
     book_date = forms.DateField(widget=DateInput)
     book_time = forms.TimeField(widget=TimeInput)
-    contact = forms.CharField()
 
     fields = [
-        book_date, book_time, contact
+        book_date, book_time,
     ]
