@@ -1,14 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import BookingForm
 from .models import Booking
+from account.models import Account, FutsalInfo, UserInfo
 
 
 # Create your views here.
 def showIndex(request):
-    return render(request, 'pages/index.html', {'title': 'Homepage | Futsal'})
+    futsals = FutsalInfo.objects.all()[:4]
+    return render(request, 'pages/index.html', {'title': 'Homepage | Futsal', 'futsals': futsals})
 
 
-def showBooking(request):
+def showBooking(request, name):
     context = {}
     if request.method == 'POST':
 
@@ -17,19 +19,27 @@ def showBooking(request):
         if form.is_valid():
             booked_date = form.cleaned_data.get('book_date')
             booked_time = form.cleaned_data.get('book_time')
-            contact = form.cleaned_data.get('contact')
             booked_futsal = request.POST['futsal_booked']
 
-            book = Booking(booked_date=booked_date, booked_time=booked_time, contact=contact, booked_by=request.user,
-                           booked_futsal=booked_futsal)
+            futsals = FutsalInfo.objects.all()
 
-            book.save()
-            return render(request, 'pages/index.html')
+            for futsal in futsals:
+                if str(futsal.futsal_name) == booked_futsal:
+                    fut = futsal
+                    book = Booking(booked_date=booked_date, booked_time=booked_time, contact=request.user.email,
+                                   booked_by=request.user, booked_futsal=fut)
+                    book.save()
+                    break
+                else:
+                    continue
+
+            return redirect('/')
         else:
-            context['fomr'] = form
+            context['form'] = form
             return render(request, 'pages/bookform.html', context)
 
     else:
         form = BookingForm(request.POST or None)
         context['form'] = form
+        context['name'] = name
         return render(request, 'pages/bookform.html', context)

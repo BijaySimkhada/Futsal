@@ -1,9 +1,9 @@
 window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     if(scrolled>=10){
-        document.querySelector("nav").style.top = "-12px";
+        document.querySelector("nav").style.top = "-1vh";
     }else{
-        document.querySelector("nav").style.top = "20px";
+        document.querySelector("nav").style.top = "18px";
     }
     console.log(scrolled);
 });

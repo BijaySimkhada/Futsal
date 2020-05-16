@@ -49,10 +49,10 @@ input[type="text"], input[type="password"], input[type="number"]{
     z-index: -1;
 }
 .img-banner3{
-    height: 40vh;
+    height: 55vh;
     position: absolute;
-    left: 75%;
-    top: 55vh;
+    left: 68%;
+    top: 51vh;
     z-index: -1;
 }
 .img-banner4{

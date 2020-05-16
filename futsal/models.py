@@ -8,5 +8,5 @@ class Booking(models.Model):
     booked_time = models.TimeField(null=False)
     booked_at = models.DateTimeField(auto_now_add=True)
     booked_by = models.ForeignKey(Account, on_delete=models.CASCADE, null=False)
-    booked_futsal = models.CharField(max_length=40)
+    booked_futsal = models.ForeignKey(FutsalInfo, on_delete=models.CASCADE, null=False)
     contact = models.CharField(max_length=20, default=None)
